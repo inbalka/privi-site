@@ -47,3 +47,73 @@
     form {
       width: 100%;
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    input {
+      box-sizing: border-box;
+      padding: 14px 16px;
+      width: 100%;
+      max-width: 360px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: none;
+      background: #4f46e5;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #777;
+      text-align: center;
+      width: 100%;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 38px;
+      }
+
+      p {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Send anything you shouldn’t text or email.</h1>
+
+    <p>
+      Send private photos, videos, or files that disappear after viewing.<br/>
+      No saving. No forwarding. No control lost.
+    </p>
+
+    <div class="cta">
+      <form action="https://formspree.io/f/mvzlgdgr" method="POST">
+        <input type="hidden" name="_subject" value="New Privi signup!" />
+        <input type="hidden" name="_redirect" value="https://useprivi.com/thanks.html" />
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Get early access</button>
+      </form>
+
+      <div class="note">
+        No spam. No noise. Just the launch.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
