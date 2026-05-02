@@ -81,6 +81,22 @@
       width: 100%;
     }
 
+    .success {
+      display: none;
+      margin-top: 30px;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .success span {
+      display: block;
+      margin-top: 8px;
+      color: #aaa;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
     @media (max-width: 480px) {
       h1 {
         font-size: 38px;
@@ -103,9 +119,8 @@
     </p>
 
     <div class="cta">
-      <form action="https://formspree.io/f/mvzlgdgr" method="POST">
+      <form id="signup-form" action="https://formspree.io/f/mvzlgdgr" method="POST">
         <input type="hidden" name="_subject" value="New Privi signup!" />
-        <input type="hidden" name="_next" value="https://useprivi.com/thanks.html" />
         <input type="email" name="email" placeholder="Enter your email" required />
         <button type="submit">Get early access</button>
       </form>
@@ -113,7 +128,38 @@
       <div class="note">
         No spam. No noise. Just the launch.
       </div>
+
+      <div class="success" id="success-message">
+        You're in.
+        <span>We’ll notify you when Privi launches.</span>
+      </div>
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById("signup-form");
+    const successMessage = document.getElementById("success-message");
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const data = new FormData(form);
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        form.style.display = "none";
+        successMessage.style.display = "block";
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    });
+  </script>
 </body>
 </html>
